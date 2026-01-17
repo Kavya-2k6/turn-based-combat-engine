@@ -18,18 +18,18 @@ private int mana;
         this.healCooldown = 0;
     }
 
-    void takedamage(int dmg) {
+   public void takeDamage(int dmg) {
         hp -= dmg;
         if (hp < 0) hp = 0;
     }
 
-    void attack(Character target) {
+   public void attack(Character target) {
         int dmg = attack + (int)(Math.random() * 5);
-        System.out.println(name + " attacks " + target.name + " for " + dmg);
-        target.takedamage(dmg);
+        System.out.println(name + " attacks " + target.getName() + " for " + dmg);
+        target.takeDamage(dmg);
     }
 
-    void specialAttack(Character target) {
+   public void specialAttack(Character target) {
         int manaCost = 5;
         if (mana < manaCost) {
             System.out.println(name + " tried special attack but not enough mana!");
@@ -38,10 +38,10 @@ private int mana;
         int dmg = attack * 2;
         mana -= manaCost;
         System.out.println(name + " uses SPECIAL ATTACK for " + dmg);
-        target.takedamage(dmg);
+        target.takeDamage(dmg);
     }
 
-    void heal() {
+   public void heal() {
         if (healsLeft <= 0 || healCooldown > 0) return;
 
         int healAmount = maxHp / 5;
@@ -56,7 +56,7 @@ private int mana;
         System.out.println(name + " heals for " + healAmount);
     }
 
-    void enemyTurn(Character target) {
+   public void enemyTurn(Character target) {
         if (hp < maxHp / 4 && healsLeft > 0 && healCooldown == 0) {
             heal();
         } else if (mana >= 5 && hp > maxHp / 2) {
@@ -66,29 +66,32 @@ private int mana;
         }
     }
 
-    boolean isAlive() {
+    public boolean isAlive() {
         return hp > 0;
     }
     int getHp() {
     return hp;
 }
 
-int getMaxHp() {
+public int getMaxHp() {
     return maxHp;
 }
 
-int getMana() {
+public int getMana() {
     return mana;
 }
 
-boolean canHeal() {
+public boolean canHeal() {
     return healCooldown == 0 && healsLeft > 0;
 }
-
-void reduceCooldown() {
+public void reduceCooldown() {
     if (healCooldown > 0) healCooldown--;
 }
-void printStatus() {
+public String getName() {
+    return name;
+}
+
+public void printStatus() {
     System.out.println(
         name + " HP: " + hp + "/" + maxHp + " | Mana: " + mana
     );
