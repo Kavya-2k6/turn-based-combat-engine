@@ -39,6 +39,8 @@ public class Main {
     hero.printStatus();
     enemy.printStatus();
     System.out.println("------------");
+    hero.reduceCooldown();
+    enemy.reduceCooldown();
 }
 
 
