@@ -1,6 +1,13 @@
 import java.util.Scanner;
 
 public class Main {
+    static void printStatus(Character c) {
+    System.out.println(
+        c.getName() + " HP: " + c.getHp() + "/" + c.getMaxHp()
+        + " | Mana: " + c.getMana()
+    );
+}
+
     public static void main(String[] args) {
         Character hero = new Character("hero", 100, 15);
         Character enemy = new Character("orc", 98, 13);
@@ -9,8 +16,9 @@ public class Main {
       while (hero.isAlive() && enemy.isAlive()) {
 
     System.out.println("\n--- YOUR TURN ---");
-    hero.printStatus();
-    enemy.printStatus();
+    printStatus(hero);
+    printStatus(enemy);
+
 
     System.out.println("choose action:");
     System.out.println("1. Attack");
@@ -26,9 +34,11 @@ public class Main {
     else System.out.println("Invalid choice.");
 
     // SHOW result of player action
-    hero.printStatus();
-    enemy.printStatus();
+  
     System.out.println("------------");
+    printStatus(hero);
+    printStatus(enemy);
+
 
     if (!enemy.isAlive()) break;
 
@@ -36,9 +46,10 @@ public class Main {
     enemy.takeTurn(hero);
 
     // SHOW result of enemy action
-    hero.printStatus();
-    enemy.printStatus();
     System.out.println("------------");
+    printStatus(hero);
+    printStatus(enemy);
+
     hero.reduceCooldown();
     enemy.reduceCooldown();
 }
