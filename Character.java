@@ -92,11 +92,7 @@ public String getName() {
     return name;
 }
 
-public void printStatus() {
-    System.out.println(
-        name + " HP: " + hp + "/" + maxHp + " | Mana: " + mana
-    );
-}
+
 
 
 }
