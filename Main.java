@@ -33,7 +33,7 @@ public class Main {
     if (!enemy.isAlive()) break;
 
     System.out.println("\n--- ENEMY TURN ---");
-    enemy.enemyTurn(hero);
+    enemy.takeTurn(hero);
 
     // SHOW result of enemy action
     hero.printStatus();

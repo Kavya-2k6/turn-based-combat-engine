@@ -56,7 +56,8 @@ private int mana;
         System.out.println(name + " heals for " + healAmount);
     }
 
-   public void enemyTurn(Character target) {
+   public void takeTurn(Character target)
+ {
         if (hp < maxHp / 4 && healsLeft > 0 && healCooldown == 0) {
             heal();
         } else if (mana >= 5 && hp > maxHp / 2) {
